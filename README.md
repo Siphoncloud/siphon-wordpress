@@ -41,6 +41,10 @@ The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
 
+= 1.6 =
+* GitHub release
+* README.md moved
+
 = 1.5 =
 * Everyone was uploading their filter file as a zip, so now that won't break the site
 
