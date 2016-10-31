@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(isset($_FILES['uploadfilter']) && !empty($_FILES['uploadfilter'])){
-        if(in_array($_FILES['uploadfilter']['type'], array('application/x-zip-compressed', "application/octet-stream", "application/zip")) || $_FILES['uploadfilter']['tmp_name'] == 'siphon-wordpress-plugin.zip'){
+        if(in_array($_FILES['uploadfilter']['type'], array('application/x-zip-compressed', "application/zip")) || $_FILES['uploadfilter']['tmp_name'] == 'siphon-wordpress-plugin.zip'){
             //user uploaded the zip
 
             $zip = new ZipArchive;
