@@ -3,7 +3,7 @@
  * Plugin Name: Siphon
  * Plugin URI: https://siphoncloud.com
  * Description: Allow users to easily setup Siphon traffic filter on their WordPress site without having to mess with code or templates
- * Version: 1.6.0
+ * Version: 1.6.3
  * Author: Siphon
  */
 
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 require_once( __DIR__.'/SiphonGitHubPluginUpdater.php' );
 if ( is_admin() ) {
-    new SiphonGitHubPluginUpdater( __FILE__, 'Siphoncloud', "siphon-wordpress" );
+    new SiphonGitHubPluginUpdater( __FILE__, 'Siphon', "siphon-wordpress" );
 }
 
 if(!class_exists('siphon')){

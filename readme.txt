@@ -41,6 +41,12 @@ The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
 
+= 1.6.3 =
+* Bug fix for auto updating
+
+= 1.6 =
+* Bug fix
+
 = 1.5 =
 * Everyone was uploading their filter file as a zip, so now that won't break the site
 
