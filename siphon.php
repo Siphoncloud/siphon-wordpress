@@ -94,27 +94,32 @@ if(class_exists('siphon')){
     register_deactivation_hook(__FILE__, array('siphon', 'deactivate'));
 
     // create plugin object
-    $siphon = new siphon();
-    if(isset($siphon)){
-        // Add the settings link to the plugins page
-        function plugin_settings_link($links){
-            $settings_link = '<a href="options-general.php?page=siphon">Settings</a>';
-            array_unshift($links, $settings_link);
+    if ( defined('DOING_CRON')){
+        // Do nothing
+    }
+    else{
+        $siphon = new siphon();
+        if(isset($siphon)){
+            // Add the settings link to the plugins page
+            function plugin_settings_link($links){
+                $settings_link = '<a href="options-general.php?page=siphon">Settings</a>';
+                array_unshift($links, $settings_link);
 
-            return $links;
+                return $links;
+            }
+
+            $plugin = plugin_basename(__FILE__);
+            add_filter("plugin_action_links_$plugin", 'plugin_settings_link');
+
+            /**
+             * Runs the traffic filter file
+             */
+            function runSiphon(){
+                global $siphon;
+                $siphon->runFilter();
+            }
+            add_action('registered_taxonomy', 'runSiphon');
         }
-
-        $plugin = plugin_basename(__FILE__);
-        add_filter("plugin_action_links_$plugin", 'plugin_settings_link');
-
-        /**
-         * Runs the traffic filter file
-         */
-        function runSiphon(){
-            global $siphon;
-            $siphon->runFilter();
-        }
-        add_action('registered_taxonomy', 'runSiphon');
     }
 }
 
