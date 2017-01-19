@@ -40,6 +40,11 @@ Navigate to your Siphon Traffic Filter dashboard and find the filter that you wa
 The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
+= 1.6.4 =
+* Bug fix for Cron loop back
+
+= 1.6.3 =
+* Bug fix for auto updating
 
 = 1.6 =
 * GitHub release
