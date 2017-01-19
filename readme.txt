@@ -41,6 +41,9 @@ The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
 
+= 1.6.6 =
+* Bug fix with previous update
+
 = 1.6.5 =
 * Bug fix
 
