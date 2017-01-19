@@ -1,7 +1,7 @@
 === Plugin Name ===
 
-Contributors: siphon
-Link: http://siphon.com/
+Contributors: Siphon
+Link: http://siphoncloud.com/
 Tags: comments, spam, bots, traffic filter, spam protection, bot protection, campaigns, marketing, click fraud
 Requires at least: 3.0.1
 Tested up to: 4.7.1
