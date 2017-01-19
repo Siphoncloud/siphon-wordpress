@@ -9,19 +9,6 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( is_admin() ) {
-    require_once(__DIR__."/wp_autoupdate.php");
-    function snb_activate_au(){
-        // set auto-update params
-        $plugin_current_version = '1.6.6"';
-        $plugin_remote_path     = 'https://siphoncloud.com/dashboard/cms-plugins/wordpress/index.php';
-        $plugin_slug            = 'siphon';
-
-        new wp_autoupdate ($plugin_current_version, $plugin_remote_path, $plugin_slug);
-    }
-
-    add_action('init', 'snb_activate_au');
-}
 
 if(!class_exists('siphon')){
     class siphon{
