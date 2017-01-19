@@ -3,8 +3,8 @@ Contributors: siphon
 Link: http://siphon.com/
 Tags: comments, spam, bots, traffic filter, spam protection, bot protection, campaigns, marketing, click fraud
 Requires at least: 3.0.1
-Tested up to: 4.4.2
-Stable tag: 4.4.2
+Tested up to: 4.7.1
+Stable tag: 4.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,9 @@ Navigate to your Siphon Traffic Filter dashboard and find the filter that you wa
 The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
+
+= 1.6.5 =
+* Bug fix
 
 = 1.6.4 =
 * Bug fix for Cron loop back
