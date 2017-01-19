@@ -41,6 +41,10 @@ The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
 
+= 1.6.4 =
+* Bug fix for Cron loop back
+* 4.7.1 Tested
+
 = 1.6.3 =
 * Bug fix for auto updating
 
