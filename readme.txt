@@ -41,6 +41,9 @@ The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
 
+= 1.6.7 =
+* Changed hook point to work better with newer themes
+
 = 1.6.6 =
 * Bug fix with previous update
 
