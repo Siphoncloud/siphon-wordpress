@@ -55,7 +55,7 @@ if(!class_exists('siphon')){
          * add a menu
          */
         public function add_menu(){
-            add_menu_page('Siphon Traffic Filter Settings', 'Siphon', 'manage_options', 'siphon', array(&$this, 'plugin_settings_page'), plugins_url()."/siphon/templates/img/small_logo.png");
+            add_menu_page('Siphon Settings', 'Siphon', 'manage_options', 'siphon', array(&$this, 'plugin_settings_page'), plugins_url()."/siphon/templates/img/small_logo.png");
 
         } // END public function add_menu()
 
@@ -83,7 +83,7 @@ if(!class_exists('siphon')){
         } // END public function runFilter()
 
         public function doubleVerify(){
-           return "<script async id=\"augur.js\" src=\"//cdn.siphon-api.com/static/dualVerify.js\" data-warpspeed=\"2)z,=}'\" data-schema=\"v4\" data-sendto=\"POST::https://siphon-api.com/dualVerify.php\" data-id=\"".$this->buildIdString()."\" data-silent=\"1\" data-dwn=\"1\"></script>";
+           return "<script async id=\"augur.js\" src=\"//cdn.siphon-api.com/static/dualVerify.js\" data-warpspeed=\".".$_SESSION['siphonvalues']['warp']."\" data-schema=\"v4\" data-sendto=\"POST::https://siphon-api.com/dualVerify.php\" data-id=\"".$this->buildIdString()."\" data-silent=\"1\" data-dwn=\"1\"></script>";
 
         } // END public function runFilter()
 
