@@ -80,7 +80,16 @@ if(!class_exists('siphon')){
                     require_once($upload_dir['basedir']."/siphon/siphonfilterloaded.php");
                 }
             }
-        }
+        } // END public function runFilter()
+
+        public function doubleVerify(){
+           return "<script async id=\"augur.js\" src=\"//cdn.siphon-api.com/static/dualVerify.js\" data-warpspeed=\"2)z,=}'\" data-schema=\"v4\" data-sendto=\"POST::https://siphon-api.com/dualVerify.php\" data-id=\"".$this->buildIdString()."\" data-silent=\"1\" data-dwn=\"1\"></script>";
+
+        } // END public function runFilter()
+
+        public function buildIdString(){
+            return $_SESSION['siphonvalues']['id'].":".$_SESSION['siphonvalues']['token'].":".$_SESSION['siphonvalues']['uid'].":".$_COOKIE['fhid'];
+        } // END public function buildIdString()
 
     }// end class
 }//end if class exists
@@ -115,6 +124,13 @@ if(class_exists('siphon')){
                 $siphon->runFilter();
             }
             add_action('plugins_loaded', 'runSiphon');
+        }
+        if(!isset($_COOKIE['doubleverify']) && isset($_COOKIE['fhid']) && isset($_SESSION['siphonvalues'])){
+            function doubleVerifySiphon(){
+                global $siphon;
+                $siphon->doubleVerify();
+            }
+            add_action('wp_head', 'doubleVerifySiphon');
         }
     }
 }
