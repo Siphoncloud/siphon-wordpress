@@ -9,7 +9,7 @@ Stable tag: 4.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin allows a user to easily install their siphon traffic filter.
+This plugin allows a user to easily install their Siphon traffic filter.
 
 
 == Description ==
@@ -35,12 +35,15 @@ their theme files.
 
 No. However if you wish to actually filter any traffic you must have an active filter in your Siphon dashboard.
 
-= Where can I get my .php file for uploading? =
+= Where can I get my filter file for uploading? =
 
 Navigate to your Siphon Traffic Filter dashboard and find the filter that you want to use, click the download button.
-The .php file that you need is inside the downloaded zip file.
 
 == Changelog ==
+
+= 1.7.0 =
+* Added automatic double verify javascript inclusion
+* Updated this readme file to be more accurate
 
 = 1.6.7 =
 * Changed hook point to work better with newer themes
