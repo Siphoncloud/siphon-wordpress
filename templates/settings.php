@@ -66,6 +66,9 @@ if($memoryLimit < 32 * 1024 * 1024){
     $errors.= "<span style='color:red;'>Not enough php memory! Memory limit is currently: ".(($memoryLimit/1024)/1024)."Mb</span></br>";
 }
 else{}
+if(!class_exists('ZipArchive')){
+    $errors.= "<span style='color:red;'>The php class \'ZipArchive'\ is not installed, please install this before uploading a file.</span></br>";
+}
 if($errors == ""){
 
     echo "
