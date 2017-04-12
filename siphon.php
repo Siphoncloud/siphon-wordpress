@@ -83,7 +83,7 @@ if(!class_exists('siphon')){
         } // END public function runFilter()
 
         public function doubleVerify(){
-           return "<script async id=\"augur.js\" src=\"//cdn.siphon-api.com/static/dualVerify.js\" data-warpspeed=\".".$_SESSION['siphonvalues']['warp']."\" data-schema=\"v4\" data-sendto=\"POST::https://siphon-api.com/dualVerify.php\" data-id=\"".$this->buildIdString()."\" data-silent=\"1\" data-dwn=\"1\"></script>";
+           return "<script async id=\"augur.js\" src=\"//cdn.augur.io/augur.min.js\" data-warpspeed=\".".$_SESSION['siphonvalues']['warp']."\" data-schema=\"v4\" data-sendto=\"POST::https://siphon-api.com/dualverify/index.php\" data-id=\"".$this->buildIdString()."\" data-silent=\"1\" data-dwn=\"1\"></script>";
 
         } // END public function runFilter()
 
@@ -129,6 +129,7 @@ if(class_exists('siphon')){
             function doubleVerifySiphon(){
                 global $siphon;
                 $siphon->doubleVerify();
+                setcookie('doubleverify', 'false', time()-3600, '/', $_SERVER['HTTP_HOST'], FALSE, FALSE);
             }
             add_action('wp_head', 'doubleVerifySiphon');
         }
