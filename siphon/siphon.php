@@ -82,15 +82,6 @@ if(!class_exists('siphon')){
             }
         } // END public function runFilter()
 
-        public function doubleVerify(){
-           return "<script async id=\"augur.js\" src=\"//cdn.augur.io/augur.min.js\" data-warpspeed=\".".$_SESSION['siphonvalues']['warp']."\" data-schema=\"v4\" data-sendto=\"POST::https://siphon-api.com/dualverify/index.php\" data-id=\"".$this->buildIdString()."\" data-silent=\"1\" data-dwn=\"1\"></script>";
-
-        } // END public function runFilter()
-
-        public function buildIdString(){
-            return $_SESSION['siphonvalues']['id'].":".$_SESSION['siphonvalues']['token'].":".$_SESSION['siphonvalues']['uid'].":".$_COOKIE['fhid'];
-        } // END public function buildIdString()
-
     }// end class
 }//end if class exists
 if(class_exists('siphon')){
@@ -124,14 +115,6 @@ if(class_exists('siphon')){
                 $siphon->runFilter();
             }
             add_action('plugins_loaded', 'runSiphon');
-        }
-        if(!isset($_COOKIE['doubleverify']) && isset($_COOKIE['fhid']) && isset($_SESSION['siphonvalues'])){
-            function doubleVerifySiphon(){
-                global $siphon;
-                $siphon->doubleVerify();
-                setcookie('doubleverify', 'false', time()-3600, '/', $_SERVER['HTTP_HOST'], FALSE, FALSE);
-            }
-            add_action('wp_head', 'doubleVerifySiphon');
         }
     }
 }
