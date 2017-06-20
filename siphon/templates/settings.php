@@ -4,39 +4,41 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(isset($_FILES['uploadfilter']) && !empty($_FILES['uploadfilter'])){
-        if(in_array($_FILES['uploadfilter']['type'], array('application/x-zip-compressed', "application/zip")) || $_FILES['uploadfilter']['tmp_name'] == 'siphon-wordpress-plugin.zip'){
+        if(in_array($_FILES['uploadfilter']['type'], array('application/x-zip-compressed', "application/zip"))){
             //user uploaded the zip
-
-            $zip = new ZipArchive;
-            $res = $zip->open($_FILES['uploadfilter']['tmp_name']);
-            if ($res === TRUE) {
+            $zip = zip_open($_FILES['uploadfilter']['tmp_name']);
+            if($zip){
                 check_admin_referer('upload_filter_');
                 $uploadDir = wp_upload_dir();
                 $targetDir = $uploadDir['basedir']."/siphon/";
                 if(!file_exists($targetDir)){
                     mkdir($targetDir, 0755, TRUE);
                 }
-                $zip->extractTo($targetDir);
-                $zip->close();
-                rename($targetDir."siphon-filter-file.php",$targetDir."siphonfilterloaded.php");
+                while($zip_entry = zip_read($zip)){
+                    $fp = fopen($targetDir.zip_entry_name($zip_entry), "w");
+                    if(zip_entry_open($zip, $zip_entry, "r")){
+                        $buf = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
+                        fwrite($fp, "$buf");
+                        zip_entry_close($zip_entry);
+                        fclose($fp);
+                    }
+                }
+                zip_close($zip);
+                rename($targetDir."siphon-filter-file.php", $targetDir."siphonfilterloaded.php");
             }
+            else{
+                echo "
+                <div class='notice notice-warning'>
+                    <p>PHP Install does not seem to support Zip files</p>
+                </div>";
+            }
+            
         }
         else{
-            check_admin_referer('upload_filter_');
-            $uploadDir = wp_upload_dir();
-            $targetDir = $uploadDir['basedir']."/siphon/";
-            if(!file_exists($targetDir)){
-                mkdir($targetDir, 0755, TRUE);
-            }
-            move_uploaded_file($_FILES['uploadfilter']['tmp_name'], $targetDir."siphonfilterloaded.php");
-
-        }
-
-    }
-    else{
-        echo"<div class='notice notice-warning is-dismissible'>
+            echo "<div class='notice notice-warning is-dismissible'>
                 <p>Not a proper file. Please upload a new filter file.</p>
              </div>";
+        }
     }
 }
 $extensions = get_loaded_extensions();
@@ -107,5 +109,3 @@ else{
                 <p>".$errors."</p>
           </div>";
 }
-?>
-

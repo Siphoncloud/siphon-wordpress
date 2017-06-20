@@ -42,7 +42,7 @@ Navigate to your Siphon Traffic Filter dashboard and find the filter that you wa
 
 = 1.7.0 =
 * Updated this readme file to be more accurate
-* Added check for ZipArchive class on upload screen
+* Updated zip uncompression feature
 
 = 1.6.7 =
 * Changed hook point to work better with newer themes
