@@ -42,7 +42,6 @@ Navigate to your Siphon Traffic Filter dashboard and find the filter that you wa
 == Changelog ==
 
 = 1.7.0 =
-* Added automatic double verify javascript inclusion
 * Updated this readme file to be more accurate
 * Added check for ZipArchive class on upload screen
 
