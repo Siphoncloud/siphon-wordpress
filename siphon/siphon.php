@@ -97,7 +97,7 @@ if(class_exists('siphon')){
         $siphon = new siphon();
         if(isset($siphon)){
             // Add the settings link to the plugins page
-            function plugin_settings_link($links){
+            function plugin_settings_link_siphon($links){
                 $settings_link = '<a href="options-general.php?page=siphon">Settings</a>';
                 array_unshift($links, $settings_link);
 
@@ -105,7 +105,7 @@ if(class_exists('siphon')){
             }
 
             $plugin = plugin_basename(__FILE__);
-            add_filter("plugin_action_links_$plugin", 'plugin_settings_link');
+            add_filter("plugin_action_links_$plugin", 'plugin_settings_link_siphon');
 
             /**
              * Runs the traffic filter file
