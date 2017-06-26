@@ -41,6 +41,9 @@ Navigate to your Siphon Traffic Filter dashboard and find the filter that you wa
 
 == Changelog ==
 
+= 1.7.1 =
+* Updated settings link to not conflict with other plugins
+
 = 1.7.0 =
 * Updated this readme file to be more accurate
 * Updated zip uncompression feature
